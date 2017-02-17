@@ -1,0 +1,68 @@
+<ng-include src="'/views/fragments/headerLogged.html'"></ng-include>
+
+<div class="content" style="margin-top:80px;">
+  <div class="row">
+    <h3 class="text-thin text-center">My lists</h3>
+    <div class="col-sm-10 col-sm-offset-1">
+
+      <div class="col-sm-4" ng-repeat="list in lists">
+        <a class="panel-a pointer" ng-click="seeList(list.id)">
+        <div class="panel bootcards-media">
+          <div class="list-panel-heading panel-heading">
+            <h3 class="text-thin text-center">{{list.title}}</h3>
+            <i class="pe-7s-trash delete-list hover-blur-red" ng-click="deleteList(list.id)"></i>
+          </div>
+          <div class="list-panel-img panel-img" width="100%">
+            <div class="mosaic-content" ng-repeat="pic in list.all_pics">
+              <div class="circle-avatar" style="background-image:url({{pic.url}}); border-top:3px solid #{{pic.rate}}; "></div>
+            </div>
+          </div>
+          <div class="list-panel-body panel-body">
+            <p class="text-thin text-center">{{list.description}}</p>
+          </div>
+          <div class="list-panel-footer panel-footer text-right">
+            <a style="color:white;" class="btn btn-outline" ng-click="seeList(list.id)">See</a>
+          </div>
+        </div>
+        </a>
+      </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 class="text-thin"><i data-toggle="modal" data-target="#addListModal" class="hover-blur-green pe-7s-plus bigger pointer"></i></h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="addListModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <form ng-submit="addList()" class="">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title text-black text-thin" id="myModalLabel"><i class="pe-7s-plus"></i> Add WishList</h3>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon" id="sizing-addon1"><i class="pe-7s-comment"></i></span>
+                <input ng-model="list.title" type="text" class="form-control" placeholder="Title" aria-describedby="sizing-addon1">
+              </div><br>
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon" id="sizing-addon1"><i class="pe-7s-note"></i></span>
+                <input ng-model="list.description" type="text" class="form-control" placeholder="Description" aria-describedby="sizing-addon1">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="submit" class="btn btn-outline text-thin">Add</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

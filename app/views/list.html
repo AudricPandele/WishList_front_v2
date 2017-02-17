@@ -1,0 +1,94 @@
+<ng-include src="'/views/fragments/headerLogged.html'"></ng-include>
+
+<div class="content" style="margin-top:80px;">
+  <div class="row">
+
+    <h3 class="text-thin text-center">Wishes in {{wishlist.title}}</h3>
+    <h4 class="text-thin text-center">{{wishlist.description}}</h4>
+    <div class="col-sm-10 col-sm-offset-1">
+
+      <div class="col-sm-3 card-back" ng-repeat="link in wishlist.wishlistLinks | orderBy: 'order'">
+        <section class="container">
+          <div id="card" class="card_{{link.id}}">
+            <figure class="front">
+              <div class="panel bootcards-media">
+                <div class="figure panel-heading item-title">
+                  <h3 class="panel-title ">{{link.title}}</h3>
+                </div>
+                <div class="figure item-img">
+                  <img src="{{link.picture}}" class="img-responsive"/>
+                </div>
+                <div class="figure panel-body item-body">
+                  <p class="text-thin">{{link.description}}</p>
+                </div>
+                <div class="text-center figure panel-footer item-footer" style="background-color:#{{link.color_rate}}">
+                  <i class="pointer hover-blur pe-7s-edit" ng-click="flip(link.id)"></i>
+                  <a href="{{link.link}}" target="_blank" class="a_none"><i class="pointer hover-blur foreground pe-7s-link"></i></a>
+                </div>
+              </div>
+            </figure>
+            <figure class="back">
+              <div class="panel bootcards-media">
+                <div class="text-center panel-back figure panel-body item-body" style="background-color:#{{link.color_rate}}">
+                  <div class="row">
+                    <div class="col-xs-5 col-md-7 col-lg-9 vcenter">
+                        <div class="col-sm-12">
+                          <div class="add-button" style="color: #{{link.color_rate}} !important">
+                            <div ng-click="updateRate(link.id, '4CAF50', '1')" class="pointer sub-button tl"></div>
+                            <div ng-click="updateRate(link.id, '3498db', '2')" class="pointer sub-button tr"></div>
+                            <div ng-click="updateRate(link.id, 'e67e22', '3')" class="pointer sub-button bl"></div>
+                            <div ng-click="updateRate(link.id, 'e74c3c', '4')" class="pointer sub-button br"></div>
+                          </div>
+                        </div>
+                    </div>
+                  </div><br>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <i class="pointer hover-blur-red foreground pe-7s-close-circle" ng-click="delete(link.id)"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center panel-back figure panel-footer item-footer" style="background-color:#{{link.color_rate}}">
+                  <i class="pointer hover-blur foreground pe-7s-back" ng-click="reflip(link.id)"></i>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </section>
+      </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 class="text-thin"><i data-toggle="modal" data-target="#addLinkModal" class="hover-blur-green pe-7s-plus bigger pointer"></i></h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addLinkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <form ng-submit="addLink()" class="">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title text-black text-thin" id="myModalLabel"><i class="pe-7s-plus"></i> Add product</h3>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon" id="sizing-addon1"><i class="pe-7s-link"></i></span>
+                <input ng-model="link.url" type="text" class="form-control" placeholder="URL" aria-describedby="sizing-addon1">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="submit" class="btn btn-outline text-thin">Add</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
