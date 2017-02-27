@@ -5,7 +5,7 @@ angular.module('wishListFrontV2App')
     getLists: function() {
       var promise = $http({
           method: 'GET',
-          url: 'http://localhost:1337/user/'+$cookieStore.get('id')+'/wishlists',
+          url: 'http://auudrc.hopto.org:1337/user/'+$cookieStore.get('id')+'/wishlists',
           headers: {
             Authorization: 'JWT '+$cookieStore.get('token')
           }
@@ -21,7 +21,7 @@ angular.module('wishListFrontV2App')
 
                 $http({
                     method: 'GET',
-                    url: 'http://localhost:1337/wishlist/'+list.id+'/wishlistLinks',
+                    url: 'http://auudrc.hopto.org:1337/wishlist/'+list.id+'/wishlistLinks',
                     headers: {
                       Authorization: 'JWT '+$cookieStore.get('token')
                     }
@@ -52,7 +52,7 @@ angular.module('wishListFrontV2App')
     getListById: function (id) {
       var promise = $http({
           method: 'GET',
-          url: 'http://localhost:1337/wishlist/'+id+'/wishlistLinks',
+          url: 'http://auudrc.hopto.org:1337/wishlist/'+id+'/wishlistLinks',
           headers: {
             Authorization: 'JWT '+$cookieStore.get('token')
           }
@@ -70,7 +70,7 @@ angular.module('wishListFrontV2App')
     getListById: function(id) {
       var promise = $http({
           method: 'GET',
-          url: 'http://localhost:1337/wishlist/'+id,
+          url: 'http://auudrc.hopto.org:1337/wishlist/'+id,
           headers: {
             Authorization: 'JWT '+$cookieStore.get('token')
           }
@@ -88,7 +88,7 @@ angular.module('wishListFrontV2App')
     addList: function (list) {
       $http({
         method: 'POST',
-        url: 'http://localhost:1337/wishlist',
+        url: 'http://auudrc.hopto.org:1337/wishlist',
         headers: {
           Authorization: 'JWT '+$cookieStore.get('token')
         },
@@ -111,7 +111,7 @@ angular.module('wishListFrontV2App')
     addLink: function (id, link) {
       $http({
         method: 'POST',
-        url: 'http://localhost:1337/wishlistlink',
+        url: 'http://auudrc.hopto.org:1337/wishlistlink',
         headers: {
           Authorization: 'JWT '+$cookieStore.get('token')
         },
@@ -133,7 +133,7 @@ angular.module('wishListFrontV2App')
     deleteLink: function(id) {
       var promise = $http({
           method: 'DELETE',
-          url: 'http://localhost:1337/wishlistlink/'+id,
+          url: 'http://auudrc.hopto.org:1337/wishlistlink/'+id,
           headers: {
             Authorization: 'JWT '+$cookieStore.get('token')
           }
@@ -151,7 +151,7 @@ angular.module('wishListFrontV2App')
     deleteList: function(id) {
       var promise = $http({
           method: 'DELETE',
-          url: 'http://localhost:1337/wishlist/'+id,
+          url: 'http://auudrc.hopto.org:1337/wishlist/'+id,
           headers: {
             Authorization: 'JWT '+$cookieStore.get('token')
           }
@@ -169,7 +169,7 @@ angular.module('wishListFrontV2App')
     updateRate: function (id, rate, order) {
       $http({
         method: 'PUT',
-        url: 'http://localhost:1337/wishlistlink/'+id,
+        url: 'http://auudrc.hopto.org:1337/wishlistlink/'+id,
         headers: {
           Authorization: 'JWT '+$cookieStore.get('token')
         },

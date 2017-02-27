@@ -4,7 +4,7 @@ angular.module('wishListFrontV2App')
     this.login = function(user) {
       $http({
         method: 'POST',
-        url: 'http://localhost:1337/auth/signin',
+        url: 'http://auudrc.hopto.org:1337/auth/signin',
         data: {
           identifier: user.mail,
           password: user.password
@@ -27,7 +27,7 @@ angular.module('wishListFrontV2App')
     this.register = function(user) {
       $http({
         method: 'POST',
-        url: 'http://localhost:1337/auth/signup',
+        url: 'http://auudrc.hopto.org:1337/auth/signup',
         data: {
           email: user.mail,
           password: user.password
